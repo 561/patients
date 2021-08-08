@@ -1,0 +1,61 @@
+<div>
+  <button [routerLink]="['']" mat-raised-button>Вернуться к списку пациентов</button>
+  <form [formGroup]="patientForm" (ngSubmit)="submit()">
+    <mat-form-field class="editField">
+      <mat-label>Фамилия</mat-label>
+      <input type="text" matInput formControlName="lastName">
+      <mat-error *ngIf="patientForm.controls['lastName'].hasError('required')">
+        Поле обязательно для заполнения.
+      </mat-error>
+      <mat-error *ngIf="patientForm.controls['lastName'].hasError('minlength')">
+        Поле должно содержать минимум 3 символа.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="editField">
+      <mat-label>Имя</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="patientForm.controls['name'].hasError('required')">
+        Поле обязательно для заполнения.
+      </mat-error>
+      <mat-error *ngIf="patientForm.controls['name'].hasError('minlength')">
+        Поле должно содержать минимум 3 символа.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="editField">
+      <mat-label>Отчество</mat-label>
+      <input type="text" matInput formControlName="secondName">
+    </mat-form-field>
+    <mat-form-field class="editField">
+      <mat-label>Возраст</mat-label>
+      <input type="number" [min]="0" [max]="200" matInput formControlName="age">
+    </mat-form-field>
+    <mat-form-field class="editField">
+      <mat-label>Пол</mat-label>
+      <mat-select  [(value)]="patient.sex" formcontrolname="sex">
+        <mat-option [value]="0">Мужчина</mat-option>
+        <mat-option [value]="1">Женщина</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Дата записи на прием</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="issues">
+      Жалобы:
+      <div *ngFor="let issue of issues; let i = index" class="issue-block">
+        <div class="issue">
+          {{issue}}
+        </div>
+        <button class="edit-button" (click)="editIssue(issue, i)" mat-raised-button color="primary">Редактировать</button>
+      </div>
+      <mat-icon (click)="addIssue()">add_circle</mat-icon>
+    </div>
+    <div class="form-group">
+      <button mat-raised-button color="primary" type="submit" [disabled]="patientForm.invalid">
+        Сохранить
+      </button>
+    </div>
+  </form>`
+</div>

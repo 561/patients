@@ -1,0 +1,21 @@
+<div>
+  <button [routerLink]="['']" mat-raised-button>Вернуться к списку пациентов</button>
+  <mat-list-item class="wrapper">
+    <div>Пациент: {{patient.lastName}} {{patient.name}} {{patient.secondName}}</div>
+    <mat-divider></mat-divider>
+    <div>Возраст: {{patient.age}}</div>
+    <mat-divider></mat-divider>
+    <div>Пол: {{patient.sex ? 'Мужчина' : 'Женщина'}}</div>
+    <mat-divider></mat-divider>
+    <div>Дата записи: {{patient.date}}</div>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  <div class="issues">
+    Жалобы:
+    <div *ngFor="let issue of issues; let i = index" class="issue-block">
+      <div class="issue">
+        {{issue}}
+      </div>
+    </div>
+  </div>
+</div>

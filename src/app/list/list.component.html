@@ -1,0 +1,10 @@
+<mat-list>
+  <ng-container *ngFor="let patient of patients">
+    <mat-list-item class="wrapper">
+      <div class="name">{{patient | fullName}}</div>
+      <button (click)="openView(patient.id)" mat-raised-button>Посмотреть данные</button>
+      <button (click)="openEdit(patient.id)" mat-raised-button color="primary">Редактировать</button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </ng-container>
+</mat-list>

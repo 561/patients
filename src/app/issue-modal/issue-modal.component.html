@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Жалоба</h1>
+<div mat-dialog-content>
+  <p>Что беспокоит пациента?</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Введите жалобу</mat-label>
+    <input matInput [(ngModel)]="data.issue">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCloseClick()">Закрыть</button>
+  <button mat-button color="warn" (click)="delete()">Удалить</button>
+  <button mat-button color="primary" [mat-dialog-close]="data.issue">Сохранить</button>
+</div>
