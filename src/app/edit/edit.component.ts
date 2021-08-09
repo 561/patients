@@ -4,9 +4,9 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { IssueModalComponent } from "../issue-modal/issue-modal.component";
 import { takeUntil } from "rxjs/operators";
 import { Patient } from "../interfaces";
-import { Genders, PatientService } from "../patient.service";
+import { PatientService } from "../patient.service";
 import { Subject } from "rxjs";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-edit',
@@ -49,7 +49,7 @@ export class EditComponent implements OnInit, OnDestroy {
       secondName: new FormControl(this.patient?.secondName || ''),
       age: new FormControl(this.patient?.age || '', Validators.required),
       sex: new FormControl(this.patient?.sex || 0),
-      date: new FormControl(this.patient?.date || '', Validators.required),
+      date: new FormControl(this.patient?.date || ''),
     });
   }
 
@@ -57,18 +57,17 @@ export class EditComponent implements OnInit, OnDestroy {
     this.destroy$.next();
   }
 
-  editIssue(issue: string, idx: number): void {
-    const dialogRef = this.matDialog.open(IssueModalComponent, {
-      width: '500px',
-      data: {issue: issue}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === false) {
-        this.issues.splice(idx, 1)
-      } else {
-        this.issues[idx] = result;
-      }
-    })
+  formValid(): boolean {
+    console.log(this.patientForm.invalid, !this.issues.every(i => i), this.patientForm.invalid && !this.issues.every(i => i))
+    return this.patientForm.invalid || !this.issues.every(i => i)
+  }
+
+  editIssue(result: string | boolean, idx: number): void {
+    if (result === false) {
+      this.issues.splice(idx, 1)
+    } else {
+      this.issues[idx] = result.toString();
+    }
   }
 
 

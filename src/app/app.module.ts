@@ -19,6 +19,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDialogModule } from "@angular/material/dialog";
 import { IssueModalComponent } from './issue-modal/issue-modal.component';
+import { IssueComponent } from './issue/issue.component';
 
 
 const appRoutes: Routes =[
@@ -34,7 +35,8 @@ const appRoutes: Routes =[
     ViewComponent,
     EditComponent,
     FullNamePipe,
-    IssueModalComponent
+    IssueModalComponent,
+    IssueComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+<div class="issue-block">
+  <div class="issue">
+    {{issue}}
+  </div>
+  <button class="edit-button" (click)="editIssue(issue)" mat-raised-button color="primary">Редактировать</button>
+</div>
+<mat-error *ngIf="!issue">
+  Жалоба не может быть пустой!
+</mat-error>

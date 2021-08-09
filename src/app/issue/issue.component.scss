@@ -1,0 +1,29 @@
+
+
+.issue {
+  border: 2px #666 solid;
+  border-radius: 5px;
+  padding: 2px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.5);
+  min-height: 40px;
+  width: 60%;
+  display: flex;
+}
+
+.issue-block {
+  margin-top: 5px;
+  display: flex;
+}
+
+.edit-button {
+  margin: auto 15px;
+  height: 40px;
+  visibility: hidden;
+  transition: .55s opacity, .55s visibility;
+  opacity: 0;
+}
+
+div:hover > button {
+  opacity: 1;
+  visibility: visible;
+}

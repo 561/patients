@@ -44,16 +44,12 @@
     </mat-form-field>
     <div class="issues">
       Жалобы:
-      <div *ngFor="let issue of issues; let i = index" class="issue-block">
-        <div class="issue">
-          {{issue}}
-        </div>
-        <button class="edit-button" (click)="editIssue(issue, i)" mat-raised-button color="primary">Редактировать</button>
-      </div>
+      <app-issue *ngFor="let issue of issues; let i = index" issue="{{issue}}" (edit)="editIssue($event,i)">
+      </app-issue>
       <mat-icon (click)="addIssue()">add_circle</mat-icon>
     </div>
     <div class="form-group">
-      <button mat-raised-button color="primary" type="submit" [disabled]="patientForm.invalid">
+      <button mat-raised-button color="primary" type="submit" [disabled]="formValid()">
         Сохранить
       </button>
     </div>
