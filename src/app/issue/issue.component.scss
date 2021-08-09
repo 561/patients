@@ -15,15 +15,17 @@
   display: flex;
 }
 
-.edit-button {
-  margin: auto 15px;
-  height: 40px;
+div:hover > mat-icon {
+  opacity: 1;
+  visibility: visible;
+}
+
+mat-icon {
   visibility: hidden;
   transition: .55s opacity, .55s visibility;
   opacity: 0;
-}
-
-div:hover > button {
-  opacity: 1;
-  visibility: visible;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: -30px;
 }
